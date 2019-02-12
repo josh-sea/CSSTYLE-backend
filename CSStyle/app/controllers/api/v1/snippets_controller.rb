@@ -23,6 +23,11 @@ class Api::V1::SnippetsController < ApplicationController
     render json: @snippet, status: :ok
   end
 
+  def update
+    @snippet = Snippet.find(params[:id])
+    @snippet.update(snippet_params)
+    render json: @snippet, status: :ok
+  end
 
   private
 
