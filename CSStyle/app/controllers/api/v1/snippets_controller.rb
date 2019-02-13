@@ -20,14 +20,39 @@ class Api::V1::SnippetsController < ApplicationController
 
   def show
     @snippet = Snippet.find(params[:id])
+    @new_file = File.open("public/snippet#{@snippet.id}.css", 'w+'){ |file| file.write(@snippet.css) }
+    render json: {filename: "http://localhost:9000/snippet#{@snippet.id}.css"}, status: :ok
+  end
+
+  out_file = File.new("out.txt", "w")
+  #...
+  out_file.puts("write your stuff here")
+  def update
+    @snippet = Snippet.find(params[:id])
+    @snippet.update(snippet_params)
     render json: @snippet, status: :ok
   end
 
+  def destroy
+    @snippet = Snippet.find(params[:id])
+    @snippet.destroy
+    render json: @snippet, status: :ok
+  end
+
+  def render_snippet
+    @height=params[:height]
+    @width=params[:width]
+    @snippet = Snippet.find(params[:id])
+    @html="<body>#{@snippet.html}</body>"
+    @css=@snippet.css
+    @css2="<head><style>#{@css}</style></head>"
+    @testing="<html>#{@css2}#{@html}</html>"
+    render html: @testing.html_safe
+  end
 
   private
 
   def snippet_params
     params.require(:snippet).permit(:html, :css, :user_id, :name, :tags)
   end
-
 end
