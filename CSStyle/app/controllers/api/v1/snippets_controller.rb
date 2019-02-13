@@ -24,9 +24,6 @@ class Api::V1::SnippetsController < ApplicationController
     render json: {filename: "http://localhost:9000/snippet#{@snippet.id}.css"}, status: :ok
   end
 
-  out_file = File.new("out.txt", "w")
-  #...
-  out_file.puts("write your stuff here")
   def update
     @snippet = Snippet.find(params[:id])
     @snippet.update(snippet_params)
