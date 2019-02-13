@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :snippets
       post '/login', to: 'users#login'
       get '/render/:id', to: 'snippets#render_snippet'
+      get '/snippets/:id/stylesheet.css', to: 'snippets#show'
     end
   end
 end
