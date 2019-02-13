@@ -29,10 +29,24 @@ class Api::V1::SnippetsController < ApplicationController
     render json: @snippet, status: :ok
   end
 
+  def destroy
+    @snippet = Snippet.find(params[:id])
+    @snippet.destroy
+    render json: @snippet, status: :ok
+  end
+
+  def render_snippet
+    @snippet = Snippet.find(params[:id])
+    @html="<body>#{@snippet.html}</body>"
+    @css=@snippet.css
+    @css2="<head><style>#{@css}</style></head>"
+    @testing="<html>#{@css2}#{@html}</html>"
+    render html: @testing.html_safe
+  end
+
   private
 
   def snippet_params
     params.require(:snippet).permit(:html, :css, :user_id, :name, :tags)
   end
-
 end
