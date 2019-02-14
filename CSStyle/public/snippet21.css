@@ -1,0 +1,14 @@
+p {
+color: red;
+font-size: 14px;
+text-decoration: underline;
+}
+
+div {
+background: rgba(0,0,255, .7);
+position: absolute;
+top: 5px;
+bottom 5px;
+left:10px;
+right 10px;
+}.testing {color: white;font-size: 30px;}<br>
