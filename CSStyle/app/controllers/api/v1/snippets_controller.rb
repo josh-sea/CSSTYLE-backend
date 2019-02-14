@@ -24,6 +24,12 @@ class Api::V1::SnippetsController < ApplicationController
     render json: {filename: "http://localhost:9000/snippet#{@snippet.id}.css"}, status: :ok
   end
 
+  def download
+    @snippet = Snippet.find(params[:id])
+    @css = @snippet.css
+    render json: @snippet, status: :ok
+  end
+
   def update
     @snippet = Snippet.find(params[:id])
     @snippet.update(snippet_params)
