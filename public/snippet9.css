@@ -1,0 +1,10 @@
+div{
+background-color: black;
+height: 100%;
+width: 50%;
+border-radius: 10px;
+}
+p {
+color: pink;
+font-size:32px;
+}
