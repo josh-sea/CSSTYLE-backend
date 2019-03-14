@@ -54,6 +54,6 @@ Rails.application.configure do
 
 
   config.action_dispatch.default_headers = {
-    'X-Frame-Options' => 'ALLOW-FROM localhost:3000'
+    # 'X-Frame-Options' => 'ALLOW-FROM localhost:3000'
   }
 end
