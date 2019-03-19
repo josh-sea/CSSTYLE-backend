@@ -21,7 +21,7 @@ class Api::V1::SnippetsController < ApplicationController
   def show
     @snippet = Snippet.find(params[:id])
     @new_file = File.open("public/snippet#{@snippet.id}.css", 'w+'){ |file| file.write(@snippet.css) }
-    render json: {filename: "http://localhost:9000/snippet#{@snippet.id}.css"}, status: :ok
+    render json: {filename: "https://csstyle-backend.herokuapp.com/snippet#{@snippet.id}.css"}, status: :ok
   end
 
   def download
